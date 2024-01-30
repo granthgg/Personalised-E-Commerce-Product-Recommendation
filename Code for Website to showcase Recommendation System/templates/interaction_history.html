@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Interaction History</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    </head>
+    
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li class="left"><a href="/"><i class="fas fa-home"></i> HOME</a></li>
+                <li class="right"><a href="/browse_products"><i class="fas fa-search"></i> BROWSE</a></li>
+            </ul>
+        </nav>
+        <h1>INTERACTION HISTORY</h1>
+    </header>
+    
+
+    <main>
+        
+        <section class="interaction-history">
+            <h2>User Browsing</h2>
+
+            <details>
+                <summary><span class="details-icon viewed"></span>Recently Viewed</summary>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Interaction Timestamp</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for interaction in viewed_interactions %}
+                            <tr>
+                                <td>{{ interaction['Product ID'] }}</td>
+                                <td>{{ interaction['Interaction Timestamp'] }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </details>
+
+            <details>
+
+                <summary><span class="details-icon added"></span>Added to Cart</summary>
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Product ID</th>
+
+                            <th>Interaction Timestamp</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for interaction in added_to_cart_interactions %}
+
+                            <tr>
+
+                                <td>{{ interaction['Product ID'] }}</td>
+
+                                <td>{{ interaction['Interaction Timestamp'] }}</td>
+
+                            </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </details>
+
+
+            <details>
+                <summary><span class="details-icon purchased"></span>Purchased</summary>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Interaction Timestamp</th>
+                            <th>Rating</th> <!-- New column for rating -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for interaction in purchased_interactions %}
+                            <tr>
+                                <td>{{ interaction['Product ID'] }}</td>
+                                <td>{{ interaction['Purchase Timestamp']}}</td>
+                                <td>{{ interaction['Rating'] }}</td> <!-- Display the rating -->
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </details>
+            
+
+
+        </section>
+
+
+    </main>
+    <footer>
+
+        <p>© 2023 Flipkart GRiD 5.0 | Neural Byte</p>
+
+    </footer>

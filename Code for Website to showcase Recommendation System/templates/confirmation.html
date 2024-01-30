@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Confirmation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li class="left"><a href="/"><i class="fas fa-home"></i> HOME</a></li>
+            <li class="right"><a href="/browse_products"><i class="fas fa-search"></i> BROWSE</a></li>
+            </ul>
+        </nav>
+        <h1>ORDER CONFIRMATION</h1>
+    </header>
+    <main>
+        <section class="confirmation">
+            <h2>Order Confirmation</h2>
+            <p>Your order has been confirmed!</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in purchased_products %}
+                        <tr>
+                            <td>{{ product['Product Name'] }}</td>
+                            <td>${{ '%0.2f' | format(product['Price']) }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <p>Total Price: ${{ '%0.2f' | format(total_price) }}</p>
+            <p>Thank you for shopping with us!</p>
+        </section>
+    </main>
+    <footer>
+        <p>© 2023 Flipkart GRiD 5.0 | Neural Byte</p>
+    </footer>
+</body>
+</html>

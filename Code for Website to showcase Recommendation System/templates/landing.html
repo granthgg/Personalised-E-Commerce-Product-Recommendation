@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>E-Commerce Platform</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    </head>
+    
+<body class="my-page">
+    <header>
+        <nav>
+            <ul>
+                <li class="left"><a href="/browse_products"><i class="fas fa-search"></i> BROWSE</a></li>
+                <li class="right"><a href="/select_user"><i class="fas fa-user"></i> LOGIN</a></li>
+            </ul>
+        </nav>
+        <h1>WELCOME TO APNI PASAND</h1>
+    </header>
+    
+    <main>
+        <div class="banner">
+            <img src="{{ url_for('static', filename='banner.jpg') }}" alt="Banner">
+        </div>
+        <div class="featured-products">
+            <h2>Featured Products</h2>
+            <ul>
+                <li><a href="/product/1"><img src="{{ url_for('static', filename='product1.png') }}" alt="Product 1"><span>WATCH</span></a></li>
+                <li><a href="/product/2"><img src="{{ url_for('static', filename='product2.png') }}" alt="Product 2"><span>PRINTER</span></a></li>
+                <li><a href="/product/3"><img src="{{ url_for('static', filename='product3.png') }}" alt="Product 3"><span>CASSETTE</span></a></li>
+            </ul>
+        </div>
+    </main>
+    <footer>
+        <p>© 2023 Flipkart GRiD 5.0 | Neural Byte</p>
+    </footer>
+</body>
+</html>
+

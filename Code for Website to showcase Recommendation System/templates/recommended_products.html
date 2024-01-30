@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Interaction History</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    </head>
+    
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li class="left"><a href="/"><i class="fas fa-home"></i> HOME</a></li>
+            <li class="right"><a href="/browse_products"><i class="fas fa-search"></i> BROWSE</a></li>
+            </ul>
+        </nav>
+        <h1>RECOMMENDED PRODUCTS</h1>
+    </header>
+    <main>
+        <section class="recommended-products">
+            <h2>Recommended Products for User {{ user_id }}</h2>
+            <div class="product-grid">
+                {% for product in products %}
+                    <div class="product-card">
+                        <img src="{{ url_for('static', filename='images/' + product['Image']) }}" alt="{{ product['Product Name'] }}">
+                        <div class="product-info">
+                            <h3>{{ product['Product Name'] }}</h3>
+                            <p>Category: {{ product['Category'] }}</p>
+                            <p>Price: {{ '%0.2f' | format(product['Price']) }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2023 Flipkart GRiD 5.0 | Neural Byte</p>
+    </footer>
+</body>
+</html>

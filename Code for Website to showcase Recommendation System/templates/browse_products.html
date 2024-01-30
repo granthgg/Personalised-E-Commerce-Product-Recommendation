@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Browse Products</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+      </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li class="left"><a href="/"><i class="fas fa-home"></i> HOME</a></li>
+            </ul>
+        </nav>
+        <h1>BROWSE PRODUCTS</h1>
+    </header>
+    <main>
+        {% for category, category_products in products_by_category.items() %}
+            <section class="product-list">
+                <h2>{{ category }}</h2>
+                <div class="product-grid">
+                    {% for product in category_products %}
+                        <div class="product-card">
+                            <img src="{{ url_for('static', filename='images/' + product['Image']) }}" alt="{{ product['Product Name'] }}">
+                            <div class="product-info">
+                                <h3>{{ product['Product Name'] }}</h3>
+                                <p>Price: ₹{{ '%0.2f' | format(product['Price']) }}</p>
+                                <a href="/product/{{ product['Product ID'] }}" class="button">View Details</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </section>
+        {% endfor %}
+    </main>
+    <footer>
+        <p>© 2023 Flipkart GRiD 5.0 | Neural Byte</p>
+    </footer>
+</body>
+</html>
+

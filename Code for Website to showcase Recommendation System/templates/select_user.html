@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Select User</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    </head>
+    
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li class="left"><a href="/"><i class="fas fa-home"></i> HOME</a></li>
+            </ul>
+        </nav>
+        <h1>LOGIN</h1>
+    </header>
+    
+    <main>
+        <div class="user-selection">
+            <form action="/user_info" method="post">
+                <label for="user_id">Select User ID:</label>
+                <select id="user_id" name="user_id">
+                    {% for user_id in user_ids %}
+                        <option value="{{ user_id }}">{{ user_id }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit">CONTINUE</button>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p>© 2023 Flipkart GRiD 5.0 | Neural Byte</p>
+    </footer>
+</body>
+</html>
+

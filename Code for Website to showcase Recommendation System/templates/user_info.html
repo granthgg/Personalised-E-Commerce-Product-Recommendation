@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>User Information</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    </head>
+    
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li class="left"><a href="/"><i class="fas fa-home"></i> HOME</a></li>
+                <li class="right"><a href="/select_user"><i class="fas fa-arrow-left"></i> BACK</a></li>
+                <li class="right"><a href="/browse_products"><i class="fas fa-search"></i> BROWSE</a></li>
+            </ul>
+        </nav>
+        <h1>USER PROFILE</h1>
+    </header>
+    
+    <main>
+        <section class="user-details">
+            <img src="{{ url_for('static', filename='user_photo.gif') }}" alt="User Photo">
+            <h2>User Details</h2>
+            <table>
+                <tr>
+                    <td><strong>User ID:</strong></td>
+                    <td>{{ user_id }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Age:</strong></td>
+                    <td>{{ user_age }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Gender:</strong></td>
+                    <td>{{ user_gender }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Location:</strong></td>
+                    <td>{{ user_location }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Subscription Status:</strong></td>
+                    <td>{{ subscription_status }}</td>
+            </table>
+
+        </section>
+
+        <div class="dropdown">
+            <button class="dropbtn">View More</button>
+
+            <div class="dropdown-content">
+                <a href="/interaction_history/{{ user_id }}">Interaction History</a>
+
+                <a href="/recommended_products/{{ user_id }}">Recommended Products</a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer>
+
+        <p>© 2023 Flipkart GRiD 5.0 | Neural Byte</p>
+
+    </footer>
+
+</body>
+
+</html>
+

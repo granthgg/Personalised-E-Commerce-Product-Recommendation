@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li class="left"><a href="/"><i class="fas fa-home"></i> HOME</a></li>
+            <li class="right"><a href="/browse_products"><i class="fas fa-search"></i> BROWSE</a></li>
+            </ul>
+        </nav>
+        <h1>PRODUCT DETAILS</h1>
+    </header>
+    <main>
+        <section class="product-details">
+            <div class="product">
+                <img src="{{ url_for('static', filename='images/' + product['Image']) }}" alt="{{ product['Product Name'] }}">
+                <h2>{{ product['Product Name'] }}</h2>
+                <p>Category: {{ product['Category'] }}</p>
+                <p>Price: ${{ '%0.2f' | format(product['Price']) }}</p>
+                <p>Brand: {{ product['Brand'] }}</p>
+                <p>Features: {{ product['Features'] }}</p>
+                <p>Average Rating: {{ product['Average Rating'] }}</p>
+                <p>Number of Ratings: {{ product['Number of Ratings'] }}</p>
+                <p>Availability: {{ product['Availability'] }}</p>
+
+                <form action="/add_to_cart/{{ product['Product ID'] }}" method="post">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" value="1" min="1">
+                    <input type="submit" value="Add to Cart">
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2023 Flipkart GRiD 5.0 | Neural Byte</p>
+    </footer>
+</body>
+</html>
+
